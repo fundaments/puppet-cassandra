@@ -281,20 +281,20 @@ class cassandra (
     $commitlog_directory_settings = $settings
   }
 
-  if is_array($data_file_directories) {
-    file { $data_file_directories:
-      ensure  => directory,
-      owner   => 'cassandra',
-      group   => 'cassandra',
-      mode    => $data_file_directories_mode,
-      require => $data_dir_require,
-      before  => $data_dir_before,
-    }
-
-    $data_file_directories_settings = merge($settings, { 'data_file_directories' => $data_file_directories, })
-  } else {
-    $data_file_directories_settings = $settings
-  }
+  #if is_array($data_file_directories) {
+  #  file { $data_file_directories:
+  #    ensure  => directory,
+  #    owner   => 'cassandra',
+  #    group   => 'cassandra',
+  #    mode    => $data_file_directories_mode,
+  #    require => $data_dir_require,
+  #    before  => $data_dir_before,
+  #  }
+  #
+  #  $data_file_directories_settings = merge($settings, { 'data_file_directories' => $data_file_directories, })
+  #} else {
+  #  $data_file_directories_settings = $settings
+  #}
 
   if $hints_directory {
     file { $hints_directory:
