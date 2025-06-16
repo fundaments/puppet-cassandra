@@ -43,7 +43,11 @@ class cassandra::params {
           $net_ipv4_tcp_wmem = '4096, 65536, 16777216'
           $sysctl_file = '/etc/sysctl.d/10-cassandra.conf'
         }
-        default: {}
+        default: {
+          $net_ipv4_tcp_rmem = undef
+          $net_ipv4_tcp_wmem = undef
+          $sysctl_file = undef
+	}
       }
 
       $cassandra_pkg = 'cassandra22'
